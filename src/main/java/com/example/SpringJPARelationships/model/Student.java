@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 @Getter
 @Setter
@@ -31,30 +32,52 @@ public class Student {
     private  String email;
 
 
+    //relationships
 
-
-    @Embedded
-    private  Address address;
-
-
-    @Column(precision = 5 , scale = 2)
-    private BigDecimal percentage;
-
-
-    private LocalDate dateOfBirth;
-
-    private LocalDate createdAt;
+    @ManyToOne
+    @JoinColumn(name =  "dept_id" , nullable = false )
+    private  Department department;
 
 
 
-    @Lob
-    private String studentDescription;
 
-    @Transient
-    private  String displayName;
 
-    @Convert(converter = BooleanToStringConverter.class)
-    private  Boolean isMonitor;
+
+
+
+//    //map Collection
+//
+//    @ElementCollection
+//    @CollectionTable(name = "std_address" , joinColumns = @JoinColumn(name = "std_id"))
+//    private List<Address> addresses;
+//
+//    @ElementCollection
+//    @CollectionTable(name = "std_skills" , joinColumns = @JoinColumn(name = "std_id"))
+//    private List<String> skills;
+
+
+//    @Embedded
+//    private  Address address;
+//
+//
+//    @Column(precision = 5 , scale = 2)
+//    private BigDecimal percentage;
+//
+//
+//    private LocalDate dateOfBirth;
+//
+//    private LocalDate createdAt;
+//
+//
+//
+//    @Lob
+//    private String studentDescription;
+//
+//    @Transient
+//    private  String displayName;
+//
+//    @Convert(converter = BooleanToStringConverter.class)
+//    private  Boolean isMonitor;
 
 
 
