@@ -22,20 +22,39 @@ public class StudentService {
     }
 
 
+    //create Student with existing department
     @Transactional
-    public  void  createStudent(Student student  , String deptName){
-        Department department =new Department();
-        department.setName(deptName);
-        departmentRepository.createDepartment(department);
+    public  void  createStudent(Student student  , Long deptId){
+        Department department=departmentRepository.getDepartmentById(deptId);
+//                .orElseThrow(() -> new RuntimeException("Department not found with ID: " + deptId));
 
-        studentRepository.createStudent(student );
+        student.setDepartment(department);
 
+        studentRepository.createStudent(student);
     }
+
+
+
+    //    //create student and department at a time
+    @Transactional
+    public  void  createStudentWithDepartment(Student student  ,   String deptName){
+         Department department =new Department();
+         department.setName(deptName);
+
+         departmentRepository.createDepartment(department);
+         student.setDepartment(department);
+
+         studentRepository.createStudent(student);
+    }
+
+
 
     @Transactional
     public  Student  getStudentById(Long id){
         return  studentRepository.getStudentById(id);
     }
+
+
 
     @Transactional
     public  void  updateStudent(Student studentRequest , Long id){

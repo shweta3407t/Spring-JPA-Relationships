@@ -19,23 +19,35 @@ public class StudentController {
 
 
 
+    //create Student with existing department
     @PostMapping
-    public ResponseEntity<String > createStudent(@RequestBody Student student , @RequestParam String dptName){
-        studentService.createStudent(student , dptName);
+    public ResponseEntity<String > createStudent(@RequestBody Student student , @PathVariable Long deptId ){
+        studentService.createStudent(student , deptId);
         return ResponseEntity.ok("DONE");
     }
+
+
+//    create student and department at a time********************
+    @PostMapping("/{deptName}")
+    public ResponseEntity<String > createStudentWithDepartment(@RequestBody Student student , @PathVariable String deptName){
+        studentService.createStudentWithDepartment(student , deptName);
+        return ResponseEntity.ok("DONE");
+    }
+
+
+
     @GetMapping("/{id}")
     public  ResponseEntity<Student > getStudentById(@PathVariable Long id){
         Student student = studentService.getStudentById(id);
         return ResponseEntity.ok(student);
     }
     @PutMapping("/{id}")
-    public  ResponseEntity<String> updateStudent(@RequestBody Student student, @RequestParam Long id){
+    public  ResponseEntity<String> updateStudent(@RequestBody Student student, @PathVariable Long id){
         studentService.updateStudent( student ,id);
         return  ResponseEntity.ok("DONE");
     }
     @DeleteMapping("/{id}")
-    public  ResponseEntity<String> deleteStudent(@RequestParam Long id){
+    public  ResponseEntity<String> deleteStudent(@PathVariable Long id){
         studentService.deleteStudent(id);
         return  ResponseEntity.ok("DONE");
     }

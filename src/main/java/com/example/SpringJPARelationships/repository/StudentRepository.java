@@ -21,11 +21,13 @@ public class StudentRepository {
 
 
 
+    //create
     public void createStudent(Student student) {
 
         entityManager.persist(student);
     }
 
+    //get
     public Student getStudentById(Long id) {
         return entityManager.find(Student.class, id);
     }
@@ -35,6 +37,7 @@ public class StudentRepository {
     }
 
 
+    //delete
     public List<Student> getAllStudent() {
         return entityManager.createQuery("FROM Student" , Student.class).getResultList();
     }

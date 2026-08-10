@@ -27,7 +27,7 @@ public class DepartmentController {
 
 
     @GetMapping("/{id}")
-    public ResponseEntity<Department> getDepartmentById(@RequestParam Long id){
+    public ResponseEntity<Department> getDepartmentById(@PathVariable Long id){
 
          Department department=departmentService.getDepartmentById(id);
 
@@ -45,7 +45,7 @@ public class DepartmentController {
 
 
     @PutMapping ("/{id}")
-    public ResponseEntity<String> updateDepartment(@RequestBody Department department , @RequestParam Long id){
+    public ResponseEntity<String> updateDepartment(@RequestBody Department department , @PathVariable Long id){
           departmentService.updateDepartment( department , id);
 
         return  ResponseEntity.ok("DONE");
@@ -56,7 +56,7 @@ public class DepartmentController {
 
 
     @DeleteMapping ("/{id}")
-    public ResponseEntity<String> deleteDepartment(@RequestParam Long id){
+    public ResponseEntity<String> deleteDepartment(@PathVariable Long id){
           departmentService.deleteDepartment( id);
 
         return  ResponseEntity.ok("DONE");
