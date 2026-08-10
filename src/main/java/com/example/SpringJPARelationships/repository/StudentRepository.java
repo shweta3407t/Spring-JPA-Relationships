@@ -12,6 +12,7 @@ public class StudentRepository {
     @PersistenceContext
     private EntityManager entityManager;
 
+
     public StudentRepository(EntityManager e) {
         this.entityManager = e;
     }
@@ -21,6 +22,7 @@ public class StudentRepository {
 
 
     public void createStudent(Student student) {
+
         entityManager.persist(student);
     }
 

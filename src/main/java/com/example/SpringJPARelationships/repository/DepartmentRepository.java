@@ -17,7 +17,7 @@ public class DepartmentRepository {
         entityManager.persist(department);
     }
 
-    public  Department getDepartmentById(long id){
+    public  Department getDepartmentById(Long id){
         return  entityManager.find(Department.class , id);
     }
 

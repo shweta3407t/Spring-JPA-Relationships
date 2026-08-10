@@ -1,5 +1,6 @@
 package com.example.SpringJPARelationships.controller;
 
+import com.example.SpringJPARelationships.model.Department;
 import com.example.SpringJPARelationships.model.Student;
 import com.example.SpringJPARelationships.service.StudentService;
 import org.springframework.http.ResponseEntity;
@@ -19,8 +20,8 @@ public class StudentController {
 
 
     @PostMapping
-    public ResponseEntity<String > createStudent(@RequestBody Student student){
-        studentService.createStudent(student);
+    public ResponseEntity<String > createStudent(@RequestBody Student student , @RequestParam String dptName){
+        studentService.createStudent(student , dptName);
         return ResponseEntity.ok("DONE");
     }
     @GetMapping("/{id}")
@@ -29,12 +30,12 @@ public class StudentController {
         return ResponseEntity.ok(student);
     }
     @PutMapping("/{id}")
-    public  ResponseEntity<String> updateStudent(@RequestBody Student student, @PathVariable Long id){
+    public  ResponseEntity<String> updateStudent(@RequestBody Student student, @RequestParam Long id){
         studentService.updateStudent( student ,id);
         return  ResponseEntity.ok("DONE");
     }
     @DeleteMapping("/{id}")
-    public  ResponseEntity<String> deleteStudent(@PathVariable Long id){
+    public  ResponseEntity<String> deleteStudent(@RequestParam Long id){
         studentService.deleteStudent(id);
         return  ResponseEntity.ok("DONE");
     }

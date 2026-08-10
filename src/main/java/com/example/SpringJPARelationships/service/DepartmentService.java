@@ -23,7 +23,7 @@ public class DepartmentService {
 
 
     @Transactional
-    public  Department getDepartmentById(long id){
+    public  Department getDepartmentById(Long id){
         return  departmentRepository.getDepartmentById(id);
     }
 
@@ -35,7 +35,7 @@ public class DepartmentService {
 
 
     @Transactional
-    public  void  updateDepartment(Department departmentRequest , long id){
+    public  void  updateDepartment(Department departmentRequest , Long id){
         Department department=getDepartmentById(id);
 
         department.setName(departmentRequest.getName());
@@ -43,7 +43,7 @@ public class DepartmentService {
     }
 
     @Transactional
-    public  void  deleteDepartment(long id){
+    public  void  deleteDepartment(Long id){
         Department department=getDepartmentById(id);
 
         departmentRepository.DeleteDepartment(department);

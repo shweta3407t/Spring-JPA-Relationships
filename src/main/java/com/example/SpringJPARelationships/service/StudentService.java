@@ -1,6 +1,8 @@
 package com.example.SpringJPARelationships.service;
 
+import com.example.SpringJPARelationships.model.Department;
 import com.example.SpringJPARelationships.model.Student;
+import com.example.SpringJPARelationships.repository.DepartmentRepository;
 import com.example.SpringJPARelationships.repository.StudentRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
@@ -10,15 +12,24 @@ import java.util.List;
 @Service
 public class StudentService {
 
-    StudentRepository studentRepository;
-    public  StudentService(StudentRepository studentRepository){
+    private StudentRepository studentRepository;
+    private DepartmentRepository departmentRepository;
+
+    public  StudentService(StudentRepository studentRepository , DepartmentRepository departmentRepository)
+    {
         this.studentRepository=studentRepository;
+        this.departmentRepository=departmentRepository;
     }
 
 
     @Transactional
-    public  void  createStudent(Student student){
-        studentRepository.createStudent(student);
+    public  void  createStudent(Student student  , String deptName){
+        Department department =new Department();
+        department.setName(deptName);
+        departmentRepository.createDepartment(department);
+
+        studentRepository.createStudent(student );
+
     }
 
     @Transactional
