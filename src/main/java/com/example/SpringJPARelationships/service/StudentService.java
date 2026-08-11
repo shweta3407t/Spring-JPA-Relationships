@@ -60,6 +60,8 @@ public class StudentService {
     public  void  updateStudent(Student studentRequest , Long id){
         Student student= studentRepository.getStudentById(id);
 
+
+        student.setDepartment(studentRequest.getDepartment());
         student.setName(studentRequest.getName());
         student.setAge(studentRequest.getAge());
         student.setEmail(studentRequest.getEmail());

@@ -36,11 +36,15 @@ public class StudentController {
 
 
 
+    //get
     @GetMapping("/{id}")
     public  ResponseEntity<Student > getStudentById(@PathVariable Long id){
         Student student = studentService.getStudentById(id);
         return ResponseEntity.ok(student);
     }
+
+
+    //update
     @PutMapping("/{id}")
     public  ResponseEntity<String> updateStudent(@RequestBody Student student, @PathVariable Long id){
         studentService.updateStudent( student ,id);
