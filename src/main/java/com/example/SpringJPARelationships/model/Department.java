@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -24,6 +25,6 @@ public class Department {
     @Column(name =  "dept_name" , unique = true , nullable = false)
     private  String name;
 
-//    @OneToMany(mappedBy = "department")
-//    private  List<Student> students ;
+    @OneToMany(mappedBy = "department")
+    private  List<Student> students =new ArrayList<>();
 }

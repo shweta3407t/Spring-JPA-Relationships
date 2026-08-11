@@ -21,7 +21,7 @@ public class StudentService {
         this.departmentRepository=departmentRepository;
     }
 
-
+//for manyToOne
     //create Student with existing department
     @Transactional
     public  void  createStudent(Student student  , Long deptId){
@@ -46,6 +46,9 @@ public class StudentService {
 
          studentRepository.createStudent(student);
     }
+
+
+
 
 
 
