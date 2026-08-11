@@ -67,6 +67,17 @@ public class StudentService {
         student.setEmail(studentRequest.getEmail());
     }
 
+////postman request for update method
+//    {
+//        "name" : "ankita" ,
+//            "age" : 22 ,
+//            "email" : "ankita@gmail.com",
+//            "department" : {
+//        "name" : "sales"
+//    }
+//
+//    }
+
     @Transactional
     public  void  deleteStudent(Long id){
         Student student=studentRepository.getStudentById(id);

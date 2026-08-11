@@ -34,7 +34,7 @@ public class Student {
 
     //relationships
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name =  "dept_id" , nullable = false )
     private  Department department;
 
