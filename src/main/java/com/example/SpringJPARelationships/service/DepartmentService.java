@@ -37,8 +37,6 @@ public class DepartmentService {
          student.setEmail(studentRequest.getEmail());
          student.setDepartment(department);
 
-
-
          department.getStudents().add(student);
 
          studentRepository.createStudent(student);

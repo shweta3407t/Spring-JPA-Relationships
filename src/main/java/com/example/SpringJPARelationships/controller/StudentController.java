@@ -21,13 +21,13 @@ public class StudentController {
 
     //create Student with existing department
     @PostMapping
-    public ResponseEntity<String > createStudent(@RequestBody Student student , @PathVariable Long deptId ){
+    public ResponseEntity<String > createStudent(@RequestBody Student student , @RequestParam Long deptId ){
         studentService.createStudent(student , deptId);
         return ResponseEntity.ok("DONE");
     }
 
 
-//    create student and department at a time********************
+//    create student and department at a time
     @PostMapping("/{deptName}")
     public ResponseEntity<String > createStudentWithDepartment(@RequestBody Student student , @PathVariable String deptName){
         studentService.createStudentWithDepartment(student , deptName);

@@ -29,6 +29,7 @@ public class StudentService {
 //                .orElseThrow(() -> new RuntimeException("Department not found with ID: " + deptId));
 
         student.setDepartment(department);
+        department.getStudents().add(student);//for oneToMany
 
         studentRepository.createStudent(student);
     }
@@ -41,9 +42,11 @@ public class StudentService {
          Department department =new Department();
          department.setName(deptName);
 
-         departmentRepository.createDepartment(department);
-         student.setDepartment(department);
+         student.setDepartment(department);//for oneToMany
+        student.setDepartment(department);
 
+
+        departmentRepository.createDepartment(department);
          studentRepository.createStudent(student);
     }
 
@@ -63,11 +66,10 @@ public class StudentService {
     public  void  updateStudent(Student studentRequest , Long id){
         Student student= studentRepository.getStudentById(id);
 
-
-        student.setDepartment(studentRequest.getDepartment());
         student.setName(studentRequest.getName());
         student.setAge(studentRequest.getAge());
         student.setEmail(studentRequest.getEmail());
+        student.setDepartment(studentRequest.getDepartment());
     }
 
 ////postman request for update method

@@ -29,7 +29,7 @@ public class DepartmentController {
 
     @PostMapping("/withStudent")
     public ResponseEntity<String> createDepartmentWithStudent(@RequestBody Department department ,
-                                                   @PathVariable Student studentName){
+                                                   @RequestParam Student studentName){
         departmentService.createDepartmentWithStudent(department  , studentName);
 
         return  ResponseEntity.ok("DONE");
