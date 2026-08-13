@@ -28,13 +28,13 @@ public class DepartmentService {
     }
 
     @Transactional
-    public  void  createDepartmentWithStudent(Department department , Student studentRequest ){
+    public  void  createDepartmentWithStudent(Department department , String studentName ,int age, String email ) {
 
          Student student=new Student();
 
-         student.setName(studentRequest.getName());
-         student.setAge(studentRequest.getAge());
-         student.setEmail(studentRequest.getEmail());
+         student.setName(studentName );
+         student.setAge(age );
+         student.setEmail(email);
          student.setDepartment(department);
 
          department.getStudents().add(student);

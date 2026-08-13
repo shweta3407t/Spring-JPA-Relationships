@@ -1,7 +1,7 @@
 package com.example.SpringJPARelationships.controller;
 
 import com.example.SpringJPARelationships.model.Department;
-import com.example.SpringJPARelationships.model.Student;
+ import com.example.SpringJPARelationships.model.Student;
 import com.example.SpringJPARelationships.service.DepartmentService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,11 +29,15 @@ public class DepartmentController {
 
     @PostMapping("/withStudent")
     public ResponseEntity<String> createDepartmentWithStudent(@RequestBody Department department ,
-                                                   @RequestParam Student studentName){
-        departmentService.createDepartmentWithStudent(department  , studentName);
+                                                   @RequestParam String studentName ,
+                                                              @RequestParam int age ,
+                                                              @RequestParam String studentEmail){
+        departmentService.createDepartmentWithStudent(department  , studentName , age , studentEmail);
 
         return  ResponseEntity.ok("DONE");
     }
+
+
 
 
 
